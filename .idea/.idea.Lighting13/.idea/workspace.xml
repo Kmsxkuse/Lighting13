@@ -4,13 +4,25 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b1133ec-7689-4631-9cd7-1158c59e127f" name="Default Changelist" comment="" />
+    <list default="true" id="1b1133ec-7689-4631-9cd7-1158c59e127f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lighting13/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Root.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Root.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PixelLockedPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line of Sight/ShadowCaster2DGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Renders/DrawFullscreenFeature.cs" root0="FORCE_HIGHLIGHTING" />
@@ -22,7 +34,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/ObstructedTiles.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/PlotLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/GetUnobstructedTiles.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/ShadowCaster2DGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/LosCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/BltRenderPass.cs" />
@@ -32,10 +43,15 @@
         <option value="$PROJECT_DIR$/Assets/Renders/DrawFullscreenFeature.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/Multiply.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/MultiBootstrap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/testFollow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PixelLockedPosition.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1klL19Pfw6JpIMJtiadbSrz34Ds" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,6 +106,7 @@
       <workItem from="1606366985070" duration="1027000" />
       <workItem from="1606415918202" duration="6175000" />
       <workItem from="1606423993907" duration="2506000" />
+      <workItem from="1606433044052" duration="361000" />
     </task>
     <servers />
   </component>

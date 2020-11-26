@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class InputManager : MonoBehaviour
     public float Speed = 5;
     
     private Rigidbody2D _rigidbody;
+    private Vector3 _inputAxis;
 
     private void Start()
     {
@@ -15,17 +17,25 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         // Get the keyboard input data
-        var inputAxis = new Vector2(); //new float2();
+        _inputAxis = Vector3.zero; //new float2();
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            inputAxis.y = 1;
+            _inputAxis.y = 1;
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            inputAxis.y = -1;
+            _inputAxis.y = -1;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            inputAxis.x = -1;
+            _inputAxis.x = -1;
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            inputAxis.x = 1;
+            _inputAxis.x = 1;
 
-        inputAxis = math.normalizesafe(inputAxis);
+        //_inputAxis = math.normalizesafe(_inputAxis);
+
+        _inputAxis = _inputAxis.normalized * Speed;
+        
+        //transform.Translate(_inputAxis / Speed);
+    }
+
+    private void FixedUpdate()
+    {
 
         // Get the touch input data
         // if (input.TouchCount() > 0 && input.GetTouch(0).phase == TouchState.Moved)
@@ -34,7 +44,7 @@ public class InputManager : MonoBehaviour
         //     inputAxis = math.normalizesafe(touchDelta);
         // }
         
-        _rigidbody.velocity = inputAxis * Speed;
+        _rigidbody.velocity = _inputAxis;
         
         //_camTransform.position = transform.position + Vector3.back;
 

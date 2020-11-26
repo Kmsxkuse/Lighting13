@@ -11,6 +11,7 @@
           <e p="DrawFullscreenPass.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="CameraFollow.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="Line of Sight" t="Include">
             <e p="GetUnobstructedTiles.cs" t="Include" />
@@ -18,6 +19,7 @@
             <e p="Multiply.shader" t="Include" />
             <e p="ShadowCaster2DGenerator.cs" t="Include" />
           </e>
+          <e p="PixelLockedPosition.cs" t="Include" />
         </e>
         <e p="Tiles" t="Include">
           <e p="CustomRules" t="Include">

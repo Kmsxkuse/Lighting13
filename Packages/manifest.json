@@ -1,13 +1,11 @@
 {
   "dependencies": {
     "com.unity.2d.animation": "5.0.3",
-    "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.psdimporter": "4.0.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.2d.tilemap.extras": "2.0.0-pre.1",
     "com.unity.burst": "1.4.1",
-    "com.unity.cinemachine": "2.6.3",
     "com.unity.collections": "0.14.0-preview.16",
     "com.unity.ide.rider": "3.0.3",
     "com.unity.jobs": "0.7.0-preview.17",
