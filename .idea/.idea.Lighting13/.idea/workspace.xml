@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1b1133ec-7689-4631-9cd7-1158c59e127f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line of Sight/ShadowCaster2DGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Renders/DrawFullscreenFeature.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/UnobstructedTiles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/ObstructedTiles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/PlotLine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/GetUnobstructedTiles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/ShadowCaster2DGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/LosCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/BltRenderPass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/BlitRenderPass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/ApplyLineOfSight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Renders/DrawFullscreenPass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Renders/DrawFullscreenFeature.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/Multiply.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Line of Sight/MultiBootstrap.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1klL19Pfw6JpIMJtiadbSrz34Ds" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds\Lighting13.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Lighting13\Builds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b1133ec-7689-4631-9cd7-1158c59e127f" name="Default Changelist" comment="" />
+      <created>1606270018044</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606270018044</updated>
+      <workItem from="1606270027737" duration="1724000" />
+      <workItem from="1606331744978" duration="12181000" />
+      <workItem from="1606366985070" duration="1027000" />
+      <workItem from="1606415918202" duration="6175000" />
+      <workItem from="1606423993907" duration="2506000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="714" y="389" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1606336508028">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="714" y="389" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1080@0.0.1920.1080" timestamp="1606336508028" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1606417775710">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606417775710" />
+  </component>
+</project>

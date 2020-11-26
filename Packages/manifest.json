@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "com.unity.2d.animation": "5.0.3",
+    "com.unity.2d.pixel-perfect": "4.0.1",
+    "com.unity.2d.psdimporter": "4.0.2",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.2d.tilemap.extras": "2.0.0-pre.1",
+    "com.unity.burst": "1.4.1",
+    "com.unity.cinemachine": "2.6.3",
+    "com.unity.collections": "0.14.0-preview.16",
+    "com.unity.ide.rider": "3.0.3",
+    "com.unity.jobs": "0.7.0-preview.17",
+    "com.unity.mathematics": "1.2.1",
+    "com.unity.performance.profile-analyzer": "1.0.3",
+    "com.unity.platforms.windows": "0.9.0-preview.9",
+    "com.unity.render-pipelines.universal": "10.2.0",
+    "com.unity.test-framework": "1.1.19",
+    "com.unity.ugui": "1.0.0",
+    "com.xsduan.hierarchy-folders": "https://github.com/xsduan/unity-hierarchy-folders.git",
+    "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.umbra": "1.0.0"
+  }
+}
