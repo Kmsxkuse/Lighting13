@@ -5,21 +5,20 @@ using UnityEngine.Rendering.Universal;
 namespace Renders
 {
     /// <summary>
-    /// Draws full screen mesh using given material and pass and reading from source target.
+    ///     Draws full screen mesh using given material and pass and reading from source target.
     /// </summary>
     internal class DrawFullscreenPass : ScriptableRenderPass
     {
-        public DrawFullscreenFeature.Settings Settings;
-
-        private RenderTargetIdentifier _source;
-        private RenderTargetIdentifier _destination;
+        private readonly string _mProfilerTag;
         private readonly int _temporaryRTId = Shader.PropertyToID("_TempRT");
-
-        private int _sourceId;
+        private RenderTargetIdentifier _destination;
         private int _destinationId;
         private bool _isSourceAndDestinationSameTarget;
 
-        private readonly string _mProfilerTag;
+        private RenderTargetIdentifier _source;
+
+        private int _sourceId;
+        public DrawFullscreenFeature.Settings Settings;
 
         public DrawFullscreenPass(string tag)
         {
@@ -32,7 +31,8 @@ namespace Renders
             blitTargetDescriptor.depthBufferBits = 0;
 
             _isSourceAndDestinationSameTarget = Settings.SourceType == Settings.DestinationType &&
-                (Settings.SourceType == BufferType.CameraColor || Settings.SourceTextureId == Settings.DestinationTextureId);
+                                                (Settings.SourceType == BufferType.CameraColor ||
+                                                 Settings.SourceTextureId == Settings.DestinationTextureId);
 
             var renderer = renderingData.cameraData.renderer;
 
@@ -67,7 +67,7 @@ namespace Renders
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             var cmd = CommandBufferPool.Get(_mProfilerTag);
@@ -87,7 +87,7 @@ namespace Renders
             CommandBufferPool.Release(cmd);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override void FrameCleanup(CommandBuffer cmd)
         {
             if (_destinationId != -1)

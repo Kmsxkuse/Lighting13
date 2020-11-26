@@ -1,13 +1,11 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
     public float Speed = 5;
-    
-    private Rigidbody2D _rigidbody;
     private Vector3 _inputAxis;
+
+    private Rigidbody2D _rigidbody;
 
     private void Start()
     {
@@ -30,22 +28,21 @@ public class InputManager : MonoBehaviour
         //_inputAxis = math.normalizesafe(_inputAxis);
 
         _inputAxis = _inputAxis.normalized * Speed;
-        
+
         //transform.Translate(_inputAxis / Speed);
     }
 
     private void FixedUpdate()
     {
-
         // Get the touch input data
         // if (input.TouchCount() > 0 && input.GetTouch(0).phase == TouchState.Moved)
         // {
         //     var touchDelta = new float2(input.GetTouch(0).deltaX, input.GetTouch(0).deltaY);
         //     inputAxis = math.normalizesafe(touchDelta);
         // }
-        
+
         _rigidbody.velocity = _inputAxis;
-        
+
         //_camTransform.position = transform.position + Vector3.back;
 
         // var playerPosition = new float3();
