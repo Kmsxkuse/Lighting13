@@ -63,7 +63,8 @@ namespace Line_of_Sight
         {
             var colliders = Object.FindObjectsOfType<CompositeCollider2D>();
 
-            for (var i = 0; i < colliders.Length; ++i) GenerateTilemapShadowCasters(colliders[i]);
+            foreach (var compositeCollider in colliders)
+                GenerateTilemapShadowCasters(compositeCollider);
         }
 
         /// <summary>
@@ -102,6 +103,11 @@ namespace Line_of_Sight
                 component.SetPath(pointsInPath3D.ToArray());
                 component.SetPathHash(Random.Range(int.MinValue,
                     int.MaxValue)); // The hashing function GetShapePathHash could be copied from the LightUtility class
+                
+                // Blame unity for not making this public. Fuck you unity. C# has reflection!
+                // By the power bestowed upon me by Bill Gates himself, I command this.
+                var fieldInfo = component.GetType().GetField("m_ApplyToSortingLayers", BindingFlags.NonPublic | BindingFlags.Instance);
+                fieldInfo.SetValue(component, new[] {0});
 
                 pointsInPath.Clear();
                 pointsInPath3D.Clear();

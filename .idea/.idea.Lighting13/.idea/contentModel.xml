@@ -14,9 +14,11 @@
           <e p="CameraFollow.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="Line of Sight" t="Include">
+            <e p="DynamicOcclusion.cs" t="Include" />
             <e p="GetUnobstructedTiles.cs" t="Include" />
             <e p="MultiBootstrap.cs" t="Include" />
             <e p="Multiply.shader" t="Include" />
+            <e p="OccludingPoolManager.cs" t="Include" />
             <e p="ShadowCaster2DGenerator.cs" t="Include" />
           </e>
           <e p="PixelLockedPosition.cs" t="Include" />

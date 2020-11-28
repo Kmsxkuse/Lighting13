@@ -59,6 +59,9 @@ namespace Line_of_Sight
 
         private void ClearTex()
         {
+            _baseTex.DiscardContents();
+            _losTex.DiscardContents();
+            
             _baseTex.Release();
             _losTex.Release();
         }
