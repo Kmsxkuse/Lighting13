@@ -61,7 +61,7 @@ namespace Line_of_Sight
         {
             _baseTex.DiscardContents();
             _losTex.DiscardContents();
-            
+
             _baseTex.Release();
             _losTex.Release();
         }

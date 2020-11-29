@@ -6,11 +6,18 @@ namespace Line_of_Sight
 {
     public enum ArrayDirection
     {
-        X, Y
+        X,
+        Y
     }
-    
+
     public class OccludingPoolManager : MonoBehaviour
     {
+        public enum OccluderType
+        {
+            Regular,
+            Composite
+        }
+
         public GameObject OccluderPrefab;
         public Transform CompositeTransform;
 
@@ -24,15 +31,10 @@ namespace Line_of_Sight
             _activeObjects = new Dictionary<Vector2, (OccluderType, GameObject)>();
         }
 
-        public enum OccluderType
-        {
-            Regular, Composite
-        }
-        
         public GameObject GetNextOccluder(Vector3 position, OccluderType occluderType = OccluderType.Regular)
         {
             var isComposite = occluderType == OccluderType.Composite;
-            var targetPool= isComposite ? _compositePool : _regularPool;
+            var targetPool = isComposite ? _compositePool : _regularPool;
             var targetTransform = isComposite ? CompositeTransform : transform;
 
             if (targetPool.Count == 0)
@@ -49,6 +51,21 @@ namespace Line_of_Sight
             return oldTarget;
         }
 
+        public void ClearAll()
+        {
+            foreach (var (occluderType, occluderObject) in _activeObjects.Values)
+            {
+                ref var targetPool = ref occluderType == OccluderType.Composite
+                    ? ref _compositePool
+                    : ref _regularPool;
+
+                occluderObject.SetActive(false);
+                targetPool.Push(occluderObject);
+            }
+
+            _activeObjects.Clear();
+        }
+
         public void RemoveOccluder(Vector3 startPosition, ArrayDirection direction, int range, int increment)
         {
             var incremental = direction switch
@@ -58,21 +75,21 @@ namespace Line_of_Sight
                 _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
             };
 
-            // PlusMinus one increment in order to select just one outside window.
             var currentPosition = (Vector2) startPosition;
-            
+
             for (var cursor = 0; cursor <= range; cursor++)
             {
                 if (_activeObjects.TryGetValue(currentPosition, out var value))
                 {
-                    ref var targetPool= ref value.occluderType == OccluderType.Composite 
-                        ? ref _compositePool : ref _regularPool;
-                
+                    ref var targetPool = ref value.occluderType == OccluderType.Composite
+                        ? ref _compositePool
+                        : ref _regularPool;
+
                     value.gameObject.SetActive(false);
                     targetPool.Push(value.gameObject);
                     _activeObjects.Remove(currentPosition);
                 }
-                
+
                 currentPosition += incremental;
             }
         }

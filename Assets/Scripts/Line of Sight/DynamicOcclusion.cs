@@ -1,8 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Line_of_Sight
 {
@@ -10,30 +9,74 @@ namespace Line_of_Sight
     {
         public Camera BaseCamera;
         public OccludingPoolManager OccludingPool;
-        public Transform VisualPlayerTransform;
-        public Tilemap DebugMap;
-        public List<TileBase> WallTiles;
+        public WallsInView Walls;
+        public Transform TargetTransform;
+        public InputManager Input;
+        public float ScanInterval = 0.01f;
 
-        private Vector3Int _currentPosition;
+        private Vector3 _currentPosition;
         private int _halfWidth, _halfHeight;
 
         private void Start()
         {
-            _currentPosition = DebugMap.WorldToCell(VisualPlayerTransform.position);
-            
+            _currentPosition = TargetTransform.position;
+
             _halfHeight = (int) BaseCamera.orthographicSize;
             _halfWidth = (int) (_halfHeight * BaseCamera.aspect);
 
-            var bottomLeft = _currentPosition - new Vector3Int(_halfWidth,_halfHeight,0);
+            // Reduction in scanning rate as speed increases.
+            ScanInterval *= Input.Speed;
 
-            for (var row = 0; row <= _halfHeight * 2; row++)
+            /*for (var row = 0; row <= _halfHeight * 2; row++)
             {
                 var floatPosition = bottomLeft + Vector3Int.up * row;
                 var position = new Vector3Int(floatPosition.x, floatPosition.y, 0);
                 DebugGenerateDots(position, ArrayDirection.X);
-            }
+            }*/
         }
 
+        private void Update()
+        {
+            var newPosition = TargetTransform.position;
+            var targetPosition = _currentPosition;
+
+            if ((Vector3Int.FloorToInt(newPosition) - Vector3Int.FloorToInt(_currentPosition)).sqrMagnitude != 0)
+            {
+                Walls.UpdateAll();
+                _currentPosition = newPosition;
+            }
+
+            if ((newPosition - targetPosition).sqrMagnitude <= ScanInterval)
+                return;
+
+            var wallVisibility = new NativeArray<bool>((_halfHeight * 2 + 1) * (_halfWidth * 2 + 1), Allocator.TempJob);
+
+            var bottomLeft = Vector3Int.FloorToInt(newPosition - new Vector3(_halfWidth, _halfHeight, 0));
+            new GetUnobstructedTiles
+            {
+                BottomLeft = new float2(bottomLeft.x, bottomLeft.y),
+                Origin = new float2(newPosition.x, newPosition.y),
+                CameraWidth = _halfWidth * 2 + 1,
+                WallsInView = Walls.Collection,
+                WallVisibility = wallVisibility
+            }.Run(wallVisibility.Length);
+
+            OccludingPool.ClearAll();
+
+            for (var index = 0; index < wallVisibility.Length; index++)
+            {
+                var position = new float2(bottomLeft.x, bottomLeft.y) +
+                               new int2(index % (_halfWidth * 2 + 1), index / (_halfWidth * 2 + 1));
+                var target = OccludingPool.GetNextOccluder(new Vector3(position.x + 0.5f, position.y + 0.5f, -0.1f));
+                target.GetComponent<SpriteRenderer>().color = wallVisibility[index] ? Color.green : Color.red;
+            }
+
+            wallVisibility.Dispose();
+
+            _currentPosition = newPosition;
+        }
+
+        /*
         private void Update()
         {
             var newPosition = DebugMap.WorldToCell(VisualPlayerTransform.position);
@@ -62,19 +105,6 @@ namespace Line_of_Sight
             var delta = _currentPosition - newPosition;
 
             return (cornerRelative, delta);
-        }
-
-        private IEnumerable<bool> GetAllWallsAlongAxis(Vector3 position, ArrayDirection direction)
-        {
-            var currentTilePosition = DebugMap.WorldToCell(position);
-
-            var range = direction == ArrayDirection.X 
-                ? Vector3Int.right * (_halfWidth * 2)
-                : Vector3Int.up * (_halfHeight * 2);
-            
-            var bounds = new BoundsInt(currentTilePosition,range + Vector3Int.one);
-            
-            return DebugMap.GetTilesBlock(bounds).Select(tile => WallTiles.Contains(tile));
         }
 
         private void DeleteDistantCells((Vector3Int, Vector3Int) dataPackage)
@@ -138,6 +168,6 @@ namespace Line_of_Sight
                 
                 targetPosition += incremental;
             }
-        }
+        }*/
     }
 }

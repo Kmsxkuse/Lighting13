@@ -20,6 +20,7 @@
             <e p="Multiply.shader" t="Include" />
             <e p="OccludingPoolManager.cs" t="Include" />
             <e p="ShadowCaster2DGenerator.cs" t="Include" />
+            <e p="WallsInView.cs" t="Include" />
           </e>
           <e p="PixelLockedPosition.cs" t="Include" />
         </e>

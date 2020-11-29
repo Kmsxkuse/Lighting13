@@ -10,47 +10,70 @@ namespace Line_of_Sight
     {
         // Used in line of sight calculations. Bresenham's line algorithm.
 
-        [ReadOnly] public int CamSize; // X size of camera.
-        [ReadOnly] public int2 CenterPoint, BottomLeft;
+        [ReadOnly] public int CameraWidth;
+        [ReadOnly] public float2 Origin, BottomLeft;
         [ReadOnly] public NativeHashSet<int2> WallsInView;
 
-        [WriteOnly] public NativeArray<bool> TileObservation;
+        [WriteOnly] public NativeArray<bool> WallVisibility;
 
         public void Execute(int index)
         {
-            var x0 = CenterPoint.x;
-            var y0 = CenterPoint.y;
+            var end = BottomLeft + new float2(index % CameraWidth + 0.5f, index / CameraWidth + 0.5f);
 
-            var target = BottomLeft + new int2(index % CamSize, index / CamSize);
-            var x1 = target.x;
-            var y1 = target.y;
+            // https://gamedev.stackexchange.com/questions/81267/how-do-i-generalise-bresenhams-line-algorithm-to-floating-point-endpoints/182143#182143
 
-            // Thanks wikipedia.
-            var dx = math.abs(x1 - x0);
-            var sx = x0 < x1 ? 1 : -1;
-            var dy = -math.abs(y1 - y0);
-            var sy = y0 < y1 ? 1 : -1;
-            var err = dx + dy; /* error value e_xy */
-            while (true)
+            //Grid cells are 1.0 X 1.0.
+            var x = math.floor(Origin.x);
+            var y = math.floor(Origin.y);
+            var diffX = end.x - Origin.x;
+            var diffY = end.y - Origin.y;
+            var stepX = math.sign(diffX);
+            var stepY = math.sign(diffY);
+
+            //Ray/Slope related maths.
+            //Straight distance to the first vertical grid boundary.
+            var xOffset = end.x > Origin.x ? math.ceil(Origin.x) - Origin.x : Origin.x - math.floor(Origin.x);
+            //Straight distance to the first horizontal grid boundary.
+            var yOffset = end.y > Origin.y ? math.ceil(Origin.y) - Origin.y : Origin.y - math.floor(Origin.y);
+            //Angle of ray/slope.
+            var angle = math.atan2(-diffY, diffX);
+            //How far to move along the ray to cross the first vertical grid cell boundary.
+            var tMaxX = xOffset / math.cos(angle);
+            //How far to move along the ray to cross the first horizontal grid cell boundary.
+            var tMaxY = yOffset / math.sin(angle);
+            //How far to move along the ray to move horizontally 1 grid cell.
+            var tDeltaX = 1 / math.cos(angle);
+            //How far to move along the ray to move vertically 1 grid cell.
+            var tDeltaY = 1 / math.sin(angle);
+
+            //Travel one grid cell at a time.
+            var manhattanDistance = (int) (math.abs(math.floor(end.x) - math.floor(Origin.x)) +
+                                           math.abs(math.floor(end.y) - math.floor(Origin.y)));
+            for (var t = 0; t <= manhattanDistance; ++t)
             {
-                if (WallsInView.Contains(new int2(x0, y0)))
+                // If collision with wall tile, "early" exit.
+                if (WallsInView.Contains(new int2((int) x, (int) y)))
                 {
-                    TileObservation[index] = false;
+                    // End point at walls are designated as visible if center is seen.
+                    WallVisibility[index] = t == manhattanDistance;
                     return;
                 }
 
-                if (x0 == x1 && y0 == y1)
-                    break;
-                var e2 = 2 * err;
-                if (e2 >= dy) /* e_xy+e_x > 0 */
-                    err += dy;
-                x0 += sx;
-                if (e2 <= dx) /* e_xy+e_y < 0 */
-                    err += dx;
-                y0 += sy;
+                //Only move in either X or Y coordinates, not both.
+                if (math.abs(tMaxX) < math.abs(tMaxY))
+                {
+                    tMaxX += tDeltaX;
+                    x += stepX;
+                }
+                else
+                {
+                    tMaxY += tDeltaY;
+                    y += stepY;
+                }
             }
 
-            TileObservation[index] = true;
+            // All checks pass, visible.
+            WallVisibility[index] = true;
         }
     }
 }
